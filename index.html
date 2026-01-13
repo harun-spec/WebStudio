@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WebStudio | Sodobne spletne strani</title>
-
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebStudio - Digitalne rešitve za vaše podjetje</title>
 
   <style>
     :root {
-      --bg: linear-gradient(135deg, #020617, #020617);
+      --bg: linear-gradient(135deg, #0f172a, #020617);
       --text: #e5e7eb;
-      --card: rgba(15, 23, 42, 0.9);
+      --card: rgba(17, 24, 39, 0.9);
       --accent: #38bdf8;
-      --nav: rgba(2, 6, 23, 0.75);
+      --nav: rgba(2, 6, 23, 0.9);
     }
 
     body.light {
@@ -22,593 +19,328 @@
       --text: #020617;
       --card: #ffffff;
       --accent: #0284c7;
-      --nav: rgba(255,255,255,0.8);
+      --nav: #ffffff;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
       transition: 0.3s ease;
+      scroll-behavior: smooth;
     }
 
-    /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: var(--nav);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    nav h2 {
-      color: var(--accent);
-      font-weight: 800;
-    }
+    nav h2 { color: var(--accent); }
+    nav a { color: var(--text); text-decoration:none; margin-left:20px; }
+    nav a:hover { color: var(--accent); }
+    .toggle { cursor:pointer; padding:8px 14px; border-radius:8px; border:none; background:var(--accent); color:#020617; font-weight:bold; margin-left:20px; }
 
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    .toggle {
-      margin-left: 20px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: #020617;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    /* HERO */
     .hero {
-      min-height: 95vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
+      min-height: 90vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: var(--accent);
-      opacity: 0.15;
-      filter: blur(140px);
-      top: -100px;
-      right: -100px;
+    .hero h1 { font-size:42px; color:var(--accent); margin-bottom:20px; }
+    .hero p { font-size:18px; max-width:600px; margin:0 auto 30px; }
+    .btn { background:var(--accent); color:#020617; padding:14px 28px; border-radius:10px; text-decoration:none; font-weight:bold; cursor:pointer; }
+
+    section { padding:80px 40px; max-width:1100px; margin:auto; }
+    section h2 { text-align:center; font-size:32px; color:var(--accent); margin-bottom:50px; }
+
+    .services, .pricing, .portfolio {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:30px;
     }
 
-    .hero h1 {
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 30px;
-      font-size: 18px;
-      opacity: 0.9;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, var(--accent), #0ea5e9);
-      color: #020617;
-      padding: 14px 32px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-block;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(56,189,248,0.4);
-    }
-
-    section {
-      padding: 90px 40px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: 36px;
-      color: var(--accent);
-      margin-bottom: 60px;
-      font-weight: 800;
-    }
-
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
+    .card, .price-card, .project {
       background: var(--card);
-      padding: 35px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-      transition: 0.3s ease;
+      padding:30px;
+      border-radius:16px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.3);
+      text-align:center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
+    .card h3, .price-card h3, .project-content h3 { color: var(--accent); margin-bottom:15px; }
+    .price-card ul { list-style:none; margin:25px 0; }
+    .price-card ul li { margin-bottom:10px; }
+    .price-card .btn { display:inline-block; margin-top:15px; }
+
+    .price-card.popular { border:2px solid var(--accent); transform:scale(1.05); }
+    .badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#020617; padding:6px 14px; border-radius:20px; font-size:14px; font-weight:bold; }
+
+    /* Portfolio */
+    .project { overflow:hidden; position:relative; }
+    .project img { width:100%; height:180px; object-fit:cover; transition: transform 0.4s ease; }
+    .project:hover img { transform: scale(1.08); }
+    .project-content { padding:20px; }
+    .project-content a { color: var(--accent); text-decoration:none; font-weight:bold; }
+
+    /* Contact Form */
+    .contact-form { max-width:500px; margin: auto; display:flex; flex-direction:column; gap:15px; }
+    .contact-form .form-group input,
+    .contact-form .form-group textarea {
+      width:100%; padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.2);
+      background:transparent; color: var(--text); font-size:15px; transition: all 0.3s ease; font-family: inherit;
     }
+    body.light .contact-form input, body.light .contact-form textarea { border:1px solid #cbd5e1; }
+    .contact-form input:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 8px var(--accent); }
 
-    .card h3 {
-      color: var(--accent);
-      margin-bottom: 15px;
-    }
+    /* Toast */
+    .toast { position: fixed; top:30px; left:50%; transform:translateX(-50%) translateY(-20px); background:var(--accent); color:#020617; padding:14px 24px; border-radius:14px; font-weight:600; box-shadow:0 20px 40px rgba(0,0,0,0.35); opacity:0; pointer-events:none; transition: all 0.4s ease; z-index:9999; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-    /* PRICING */
-    .price-card {
-      background: var(--card);
-      padding: 40px 30px;
-      border-radius: 20px;
-      text-align: center;
-      position: relative;
-      transition: 0.3s ease;
-    }
+    /* Scroll reveal */
+    .reveal { opacity:0; transform:translateY(40px); transition: all 0.8s ease; }
+    .reveal.active { opacity:1; transform:translateY(0); }
 
-    .price-card:hover {
-      transform: translateY(-8px);
-    }
+    /* WhatsApp button */
+    .whatsapp-btn { position:fixed; bottom:25px; right:25px; width:60px; height:60px; background:#25D366; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; text-decoration:none; box-shadow:0 15px 30px rgba(0,0,0,0.4); z-index:999; transition: transform 0.3s ease; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
 
-    .price-card.popular {
-      border: 2px solid var(--accent);
-      background: linear-gradient(
-        180deg,
-        rgba(56,189,248,0.15),
-        var(--card)
-      );
-    }
-
-    .badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #020617;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .price {
-      font-size: 40px;
-      font-weight: 800;
-      margin: 20px 0;
-    }
-
-    .price span {
-      font-size: 16px;
-      font-weight: normal;
-    }
-
-    ul {
-      list-style: none;
-      margin: 25px 0;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    /* PORTFOLIO */
-    .project {
-      background: var(--card);
-      border-radius: 18px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-
-    .project img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .project::after {
-      content: "Ogled projekta →";
-      position: absolute;
-      inset: 0;
-      background: rgba(2,6,23,0.75);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--accent);
-      font-weight: 600;
-      opacity: 0;
-      transition: 0.3s ease;
-    }
-
-    .project:hover::after {
-      opacity: 1;
-    }
-
-    footer {
-      padding: 25px;
-      text-align: center;
-      font-size: 14px;
-      background: var(--nav);
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  
-  /* ANIMACIJA INPUTA */
-.contact-form .form-group {
-  position: relative;
-}
-
-.contact-form input,
-.contact-form textarea {
-  transition: 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-body.light .contact-form input,
-body.light .contact-form textarea {
-  border: 1px solid #cbd5e1;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
-}
-
-/* SUCCESS PORUKA */
-.success-message {
-  display: none;
-  text-align: center;
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 12px;
-  background: var(--accent);
-  color: #020617;
-  font-weight: bold;
-  animation: fadeIn 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-  /* CONTACT FORM */
-.contact-form {
-  max-width: 600px;
-  margin: auto;
-  background: var(--card);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-}
-
-.contact-form h3 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: var(--accent);
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: transparent;
-  color: var(--text);
-  font-family: inherit;
-  font-size: 15px;
-}
-
-body.light .form-group input,
-body.light .form-group textarea {
-  border: 1px solid #cbd5e1;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #94a3b8;
-}
-
-.form-group textarea {
-  resize: none;
-  min-height: 120px;
-}
-
-.contact-form button {
-  width: 100%;
-  margin-top: 10px;
-}
-  
-  /* WHATSAPP BUTTON */
-.whatsapp-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  background: #25D366;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  text-decoration: none;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-  z-index: 999;
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-btn:hover {
-  transform: scale(1.1);
-}
-  
-  /* TOAST NOTIFICATION */
-.toast {
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-20px);
-  background: var(--accent);
-  color: #020617;
-  padding: 14px 24px;
-  border-radius: 14px;
-  font-weight: 600;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  z-index: 9999;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
   </style>
 </head>
-
 <body>
 
-<nav>
-  <h2>WebStudio</h2>
-  <div>
-    <a href="#storitve">Storitve</a>
-    <a href="#cene">Cene</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#kontakt">Kontakt</a>
-    <button class="toggle" onclick="toggleMode()">🌙</button>
-  </div>
-</nav>
-
-<section class="hero">
-  <div>
-    <h1>Sodobne spletne strani za vaše podjetje</h1>
-    <p>Pomagam malim podjetjem ustvariti hitro, moderno in prodajno učinkovito spletno prisotnost.</p>
-    <a href="#kontakt" class="btn">Zahtevaj ponudbo</a>
-  </div>
-</section>
-
-<section id="storitve">
-  <h2>Storitve</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Spletne strani</h3>
-      <p>Popolnoma prilagojene in odzivne strani.</p>
+  <!-- NAV -->
+  <nav>
+    <h2>WebStudio</h2>
+    <div>
+      <a href="#storitve">Storitve</a>
+      <a href="#zakaj">Zakaj jaz</a>
+      <a href="#cene">Cene</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#kontakt">Kontakt</a>
+      <button class="toggle" onclick="toggleMode()">🌙</button>
     </div>
-    <div class="card">
-      <h3>Landing page</h3>
-      <p>Strani optimizirane za prodajo.</p>
-    </div>
-    <div class="card">
-      <h3>Vzdrževanje</h3>
-      <p>Podpora, posodobitve in optimizacija.</p>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero reveal">
+    <div>
+      <h1>Izdelava sodobnih spletnih strani</h1>
+      <p>Pomagam malim podjetjem, da izstopajo na spletu s hitrimi, modernimi in odzivnimi spletnimi stranmi.</p>
+      <a href="#kontakt" class="btn">Zahtevaj ponudbo</a>
     </div>
   </div>
-</section>
 
-<section id="cene">
-  <h2>Cene</h2>
-  <div class="grid">
-    <div class="price-card">
-      <h3>Osnovni</h3>
-      <div class="price">54€</div>
-      <ul>
-        <li>✔ Ena stran</li>
-        <li>✔ Osnovni dizajn</li>
-        <li>✔ Mobilna optimizacija</li>
-      </ul>
-      <a href="#kontakt" class="btn">Izberi</a>
+  <!-- STORITVE -->
+  <section id="storitve" class="reveal">
+    <h2>Moje storitve</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Izdelava spletnih strani</h3>
+        <p>Sodobne in prilagojene spletne strani za vse naprave.</p>
+      </div>
+      <div class="card">
+        <h3>Pristajalne strani</h3>
+        <p>Enostavne strani za promocijo izdelkov ali storitev.</p>
+      </div>
+      <div class="card">
+        <h3>Vzdrževanje</h3>
+        <p>Posodobitve in tehnična podpora.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="price-card popular">
-      <div class="badge">Najbolj priljubljen</div>
-      <h3>Standard</h3>
-      <div class="price">100€</div>
-      <ul>
-        <li>✔ Do 3 strani</li>
-        <li>✔ Sodoben dizajn</li>
-        <li>✔ SEO osnove</li>
-      </ul>
-      <a href="#kontakt" class="btn">Izberi</a>
+  <!-- ZAKAJ -->
+  <section id="zakaj" class="reveal">
+    <h2>Zakaj izbrati mene?</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Hitra izdelava</h3>
+        <p>Kratki dobavni roki.</p>
+      </div>
+      <div class="card">
+        <h3>Sodoben dizajn</h3>
+        <p>Čist in profesionalen videz.</p>
+      </div>
+      <div class="card">
+        <h3>Dostopne cene</h3>
+        <p>Idealno za mala podjetja.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="price-card">
-      <h3>Premium</h3>
-      <div class="price">200€+</div>
-      <ul>
-        <li>✔ Napreden dizajn</li>
-        <li>✔ SEO </li>
-        <li>✔ Podpora</li>
-      </ul>
-      <a href="#kontakt" class="btn">Kontakt</a>
+  <!-- PRICING -->
+  <section id="cene" class="reveal">
+    <h2>Cene in paketi</h2>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Osnovni paket</h3>
+        <p>Za posameznike in male projekte</p>
+        <div class="price">54€ <span>/ enkratno</span></div>
+        <ul>
+          <li>✔ Enostranska spletna stran</li>
+          <li>✔ Osnovni dizajn</li>
+          <li>✔ Prilagojeno za mobilne naprave</li>
+          <li>✔ Kontaktni podatki</li>
+        </ul>
+        <a href="#kontakt" class="btn">Izberi paket</a>
+      </div>
+
+      <div class="price-card popular">
+        <div class="badge">Najbolj priljubljen</div>
+        <h3>Standard paket</h3>
+        <p>Za mala podjetja</p>
+        <div class="price">100€ <span>/ enkratno</span></div>
+        <ul>
+          <li>✔ Do 5 podstrani</li>
+          <li>✔ Sodoben dizajn</li>
+          <li>✔ Mobilna optimizacija</li>
+          <li>✔ Kontaktni obrazec</li>
+          <li>✔ Osnovna SEO optimizacija</li>
+        </ul>
+        <a href="#kontakt" class="btn">Izberi paket</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Premium paket</h3>
+        <p>Za resne projekte</p>
+        <div class="price">200€+ <span>/ po dogovoru</span></div>
+        <ul>
+          <li>✔ Več podstrani</li>
+          <li>✔ Napreden dizajn</li>
+          <li>✔ SEO optimizacija</li>
+          <li>✔ Hitrost & varnost</li>
+          <li>✔ Podpora po zaključku</li>
+        </ul>
+        <a href="#kontakt" class="btn">Kontaktiraj me</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="portfolio">
-  <h2>Portfolio</h2>
-  <div class="grid">
-    <div class="project"><img src="https://via.placeholder.com/400x200"></div>
-    <div class="project"><img src="https://via.placeholder.com/400x200"></div>
-    <div class="project"><img src="https://via.placeholder.com/400x200"></div>
-  </div>
-</section>
-
-
-
-<footer>
-  © 2026 WebStudio · Vse pravice pridržane
-</footer>
-
-<script>
-  const body = document.body;
-  const btn = document.querySelector(".toggle");
-
-  function toggleMode() {
-    body.classList.toggle("light");
-    const light = body.classList.contains("light");
-    btn.textContent = light ? "☀️" : "🌙";
-    localStorage.setItem("mode", light ? "light" : "dark");
-  }
-
-  if (localStorage.getItem("mode") === "light") {
-    body.classList.add("light");
-    btn.textContent = "☀️";
-  }
-</script>
-<section id="kontakt">
-  <h2>Kontakt</h2>
-
-  <form 
-    class="contact-form"
-    action="https://formsubmit.co/harunhasanovic33@gmail.com"
-    method="POST"
-  >
-
-    <h3>Pošalji povpraševanje</h3>
-
-    <!-- Anti spam -->
-    <input type="hidden" name="_captcha" value="false">
-
-    
-    
-
-    <div class="form-group">
-      <input type="text" name="name" placeholder="Ime in priimek" required>
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="reveal">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Projekt 1">
+        <div class="project-content">
+          <h3>Poslovna spletna stran</h3>
+          <p>Preprosta predstavitvena stran za manjše podjetje.</p>
+          <a href="#">Ogled projekta</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Projekt 2">
+        <div class="project-content">
+          <h3>Landing page</h3>
+          <p>Stran za promocijo storitev.</p>
+          <a href="#">Ogled projekta</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Projekt 3">
+        <div class="project-content">
+          <h3>Osebna spletna stran</h3>
+          <p>Minimalističen dizajn.</p>
+          <a href="#">Ogled projekta</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="form-group">
-      <input type="email" name="email" placeholder="Email naslov" required>
-    </div>
+  <!-- KONTAKT -->
+  <section id="kontakt" class="reveal">
+    <h2>Kontakt</h2>
 
-    <div class="form-group">
-      <input type="text" name="company" placeholder="Podjetje (neobvezno)">
-    </div>
+    <form class="contact-form" id="contactForm">
+      <h3>Pošalji povpraševanje</h3>
 
-    <div class="form-group">
-      <textarea name="message" placeholder="Sporočilo" required></textarea>
-    </div>
+      <input type="hidden" name="_captcha" value="false">
 
-    <button type="submit" class="btn">Pošlji sporočilo</button>
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Ime in priimek" required>
+      </div>
 
-  </form>
-</section>
-  <a 
-  href="https://wa.me/38669761596" 
-  class="whatsapp-btn" 
-  target="_blank"
->
-  💬
-</a>
-  
-  
-  <div class="toast" id="toast">
-  Sporočilo je bilo poslano ✅
-</div>
-  
-  
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email naslov" required>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="company" placeholder="Podjetje (neobvezno)">
+      </div>
+
+      <div class="form-group">
+        <textarea name="message" placeholder="Sporočilo" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Pošlji sporočilo</button>
+    </form>
+
+    <div class="toast" id="toast">Sporočilo je bilo poslano ✅</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 WebStudio | Vse pravice pridržane
+  </footer>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/38669761596" class="whatsapp-btn" target="_blank">💬</a>
+
+  <!-- JS -->
   <script>
-const form = document.getElementById("contactForm");
-const toast = document.getElementById("toast");
+    // Dark/Light mode
+    const body = document.body;
+    const button = document.querySelector(".toggle");
+    function toggleMode() {
+      body.classList.toggle("light");
+      const isLight = body.classList.contains("light");
+      button.textContent = isLight ? "☀️" : "🌙";
+      localStorage.setItem("mode", isLight ? "light" : "dark");
+    }
+    if(localStorage.getItem("mode")==="light"){body.classList.add("light"); button.textContent="☀️";}
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+    // Scroll reveal
+    const reveals = document.querySelectorAll(".reveal");
+    function revealOnScroll(){
+      reveals.forEach(el=>{
+        const windowHeight=window.innerHeight;
+        const elementTop=el.getBoundingClientRect().top;
+        const elementVisible=100;
+        if(elementTop<windowHeight-elementVisible){el.classList.add("active");}
+      });
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
 
-  const data = new FormData(form);
+    // AJAX contact form + toast
+    const form = document.getElementById("contactForm");
+    const toast = document.getElementById("toast");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com",{method:"POST", body:data})
+        .then(res=>res.ok?res.json():Promise.reject())
+        .then(()=>{
+          form.reset();
+          window.scrollTo({top:0, behavior:"smooth"});
+          toast.classList.add("show");
+          setTimeout(()=>{toast.classList.remove("show");},4000);
+        })
+        .catch(()=>{alert("Prišlo je do napake. Poskusite znova.");});
+    });
+  </script>
 
-  fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
-    method: "POST",
-    body: data
-  })
-  .then(res => res.ok ? res.json() : Promise.reject())
-  .then(() => {
-    form.reset();
-
-    // scroll na vrh
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // show toast
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 4000);
-  })
-  .catch(() => {
-    alert("Prišlo je do napake. Poskusite znova.");
-  });
-});
-</script>
-  
 </body>
-</html>
+  </html>
