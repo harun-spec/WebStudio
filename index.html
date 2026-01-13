@@ -504,6 +504,28 @@ body.light .form-group textarea {
   </div>
 </section>
 
+
+
+<footer>
+  © 2026 WebStudio · Vse pravice pridržane
+</footer>
+
+<script>
+  const body = document.body;
+  const btn = document.querySelector(".toggle");
+
+  function toggleMode() {
+    body.classList.toggle("light");
+    const light = body.classList.contains("light");
+    btn.textContent = light ? "☀️" : "🌙";
+    localStorage.setItem("mode", light ? "light" : "dark");
+  }
+
+  if (localStorage.getItem("mode") === "light") {
+    body.classList.add("light");
+    btn.textContent = "☀️";
+  }
+</script>
 <section id="kontakt">
   <h2>Kontakt</h2>
 
@@ -541,28 +563,6 @@ body.light .form-group textarea {
 
   </form>
 </section>
-
-<footer>
-  © 2026 WebStudio · Vse pravice pridržane
-</footer>
-
-<script>
-  const body = document.body;
-  const btn = document.querySelector(".toggle");
-
-  function toggleMode() {
-    body.classList.toggle("light");
-    const light = body.classList.contains("light");
-    btn.textContent = light ? "☀️" : "🌙";
-    localStorage.setItem("mode", light ? "light" : "dark");
-  }
-
-  if (localStorage.getItem("mode") === "light") {
-    body.classList.add("light");
-    btn.textContent = "☀️";
-  }
-</script>
-
   <a 
   href="https://wa.me/38669761596" 
   class="whatsapp-btn" 
