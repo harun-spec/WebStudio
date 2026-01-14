@@ -354,19 +354,18 @@ form.addEventListener("submit", function(e){
   const data = new FormData(form);
 
   fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
-    method: "POST",
-    body: data
-  })
-  .then(res => res.ok ? res.json() : Promise.reject())
-  .then(() => {
-    form.reset();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 4000);
-  })
-  .catch(() => {
-    alert("Prišlo je do napake. Poskusite znova.");
-  });
+  method: "POST",
+  body: data
+})
+.then(() => {
+  form.reset();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 4000);
+})
+.catch(() => {
+  alert("Prišlo je do napake. Poskusite znova.");
+});
 });
   </script>
 
