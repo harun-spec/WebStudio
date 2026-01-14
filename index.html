@@ -279,36 +279,88 @@
   </section>
 
   <!-- KONTAKT -->
-  <section id="kontakt" class="reveal">
-    <h2>Kontakt</h2>
+<section id="kontakt">
+  <h2>Kontakt</h2>
 
-    <form id="contactForm" class="contact-form">
-     
-      <h3>Pošalji povpraševanje</h3>
+  <form id="contactForm" class="contact-form">
+    <input type="hidden" name="_captcha" value="false">
 
-      <input type="hidden" name="_captcha" value="false">
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Ime in priimek" required>
+    </div>
 
-      <div class="form-group">
-        <input type="text" name="name" placeholder="Ime in priimek" required>
-      </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Email naslov" required>
+    </div>
 
-      <div class="form-group">
-        <input type="email" name="email" placeholder="Email naslov" required>
-      </div>
+    <div class="form-group">
+      <input type="text" name="company" placeholder="Podjetje (neobvezno)">
+    </div>
 
-      <div class="form-group">
-        <input type="text" name="company" placeholder="Podjetje (neobvezno)">
-      </div>
+    <div class="form-group">
+      <textarea name="message" placeholder="Sporočilo" required></textarea>
+    </div>
 
-      <div class="form-group">
-        <textarea name="message" placeholder="Sporočilo" required></textarea>
-      </div>
+    <button type="submit" class="btn">Pošlji sporočilo</button>
+  </form>
 
-      <button type="submit" class="btn">Pošlji sporočilo</button>
-    </form>
+  <div class="toast" id="toast">
+    Sporočilo je bilo poslano ✅
+  </div>
+</section>
 
-   
-  </section>
+<style>
+  .toast {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: #38bdf8;
+    color: #020617;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-weight: 600;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 9999;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+
+<script>
+const form = document.getElementById("contactForm");
+const toast = document.getElementById("toast");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // spriječi reload stranice
+
+  const data = new FormData(form);
+
+  fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
+    method: "POST",
+    headers: {
+      "Accept": "application/json" // ovo je ključno za JSON
+    },
+    body: data
+  })
+  .then(res => res.ok ? res.json() : Promise.reject())
+  .then(() => {
+    form.reset(); // očisti formu
+    window.scrollTo({ top: 0, behavior: "smooth" }); // scroll na vrh
+    toast.classList.add("show"); // pokaži toast
+    setTimeout(() => toast.classList.remove("show"), 4000); // sakrij nakon 4s
+  })
+  .catch(() => {
+    alert("Prišlo je do napake. Poskusite znova.");
+  });
+});
+</script>
 
   <!-- FOOTER -->
   <footer>
@@ -344,46 +396,10 @@
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
 
-    // AJAX contact form + toast
-   const form = document.getElementById("contactForm");
-const toast = document.getElementById("toast");
 
-form.addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const data = new FormData(form);
-
-fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
-  method: "POST",
-  headers: {
-    "Accept": "application/json"
-  },
-  body: data
-})
-.then(res => {
-  if (!res.ok) throw new Error("Network error");
-  return res.json();
-})
-.then(json => {
-  console.log("FormSubmit response:", json);
-
-  form.reset();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
-  toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 4000);
-})
-.catch(err => {
-  console.error(err);
-  alert("Prišlo je do napake. Poskusite znova.");
-});
-
-});
   </script>
 
-  <div class="toast" id="toast">
-  Sporočilo je bilo poslano ✅
-</div>
+
   
   
 </body>
