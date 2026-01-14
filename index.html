@@ -353,19 +353,31 @@ form.addEventListener("submit", function(e){
 
   const data = new FormData(form);
 
-  fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
+fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
   method: "POST",
+  headers: {
+    "Accept": "application/json"
+  },
   body: data
 })
-.then(() => {
+.then(res => {
+  if (!res.ok) throw new Error("Network error");
+  return res.json();
+})
+.then(json => {
+  console.log("FormSubmit response:", json);
+
   form.reset();
   window.scrollTo({ top: 0, behavior: "smooth" });
+
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 4000);
 })
-.catch(() => {
+.catch(err => {
+  console.error(err);
   alert("Prišlo je do napake. Poskusite znova.");
 });
+
 });
   </script>
 
