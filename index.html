@@ -105,8 +105,27 @@
     .contact-form input:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 8px var(--accent); }
 
     /* Toast */
-    .toast { position: fixed; top:30px; left:50%; transform:translateX(-50%) translateY(-20px); background:var(--accent); color:#020617; padding:14px 24px; border-radius:14px; font-weight:600; box-shadow:0 20px 40px rgba(0,0,0,0.35); opacity:0; pointer-events:none; transition: all 0.4s ease; z-index:9999; }
-    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .toast {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: var(--accent);
+  color: #020617;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
     /* Scroll reveal */
     .reveal { opacity:0; transform:translateY(40px); transition: all 0.8s ease; }
@@ -264,6 +283,9 @@
     <h2>Kontakt</h2>
 
     <form id="contactForm" class="contact-form">
+      <div class="toast" id="toast">
+  Sporočilo je bilo poslano ✅
+</div>
       <h3>Pošalji povpraševanje</h3>
 
       <input type="hidden" name="_captcha" value="false">
@@ -343,4 +365,4 @@
   </script>
 
 </body>
-  </html>
+</html>
