@@ -351,6 +351,8 @@
     const toast = document.getElementById("toast");
     form.addEventListener("submit", function(e){
       e.preventDefault();
+      
+      toast.classList.add("show");
       const data = new FormData(form);
       fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com",{method:"POST", body:data})
         .then(res=>res.ok?res.json():Promise.reject())
