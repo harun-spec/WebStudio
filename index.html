@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebStudio - Digitalne rešitve za vaše podjetje</title>
 
-    <!-- favicon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/q3nR7nRy/file-00000000b40c724699b7799ce5a84f9b.png">
 
   <style>
@@ -36,115 +36,100 @@
     }
 
     nav {
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 10px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
       background: var(--nav);
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      position:sticky;
+      top:0;
+      z-index:999;
     }
 
-    nav h2 { color: var(--accent); }
-    nav a { color: var(--text); text-decoration:none; margin-left:20px; }
+    nav img { height:42px; }
+    nav a { color: var(--text); text-decoration:none; margin-left:20px; font-weight:500; }
     nav a:hover { color: var(--accent); }
-    .toggle { cursor:pointer; padding:8px 14px; border-radius:8px; border:none; background:var(--accent); color:#020617; font-weight:bold; margin-left:20px; }
+    .toggle { cursor:pointer; padding:6px 12px; border-radius:8px; border:none; background:var(--accent); color:#020617; font-weight:bold; margin-left:20px; }
 
     .hero {
-      min-height: 90vh;
+      min-height:80vh;
       display:flex;
       justify-content:center;
       align-items:center;
       text-align:center;
-      padding:40px;
+      padding:40px 20px;
     }
 
-    .hero h1 { font-size:42px; color:var(--accent); margin-bottom:20px; }
+    .hero h1 { font-size:36px; color:var(--accent); margin-bottom:20px; }
     .hero p { font-size:18px; max-width:600px; margin:0 auto 30px; }
-    .btn { background:var(--accent); color:#020617; padding:14px 28px; border-radius:10px; text-decoration:none; font-weight:bold; cursor:pointer; }
+    .btn { background:var(--accent); color:#020617; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; cursor:pointer; }
 
-    section { padding:80px 40px; max-width:1100px; margin:auto; }
+    section { padding:60px 20px; max-width:1100px; margin:auto; }
     section h2 { text-align:center; font-size:32px; color:var(--accent); margin-bottom:50px; }
 
-    .services, .pricing, .portfolio {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-      gap:30px;
-    }
+    .services, .pricing, .portfolio { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
 
     .card, .price-card, .project {
       background: var(--card);
-      padding:30px;
+      padding:25px;
       border-radius:16px;
-      box-shadow:0 20px 40px rgba(0,0,0,0.3);
+      box-shadow:0 15px 30px rgba(0,0,0,0.25);
       text-align:center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card h3, .price-card h3, .project-content h3 { color: var(--accent); margin-bottom:15px; }
-    .price-card ul { list-style:none; margin:25px 0; }
+    .price-card ul { list-style:none; margin:25px 0; padding:0; }
     .price-card ul li { margin-bottom:10px; }
-    .price-card .btn { display:inline-block; margin-top:15px; }
-
     .price-card.popular { border:2px solid var(--accent); transform:scale(1.05); }
     .badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#020617; padding:6px 14px; border-radius:20px; font-size:14px; font-weight:bold; }
 
-    /* Portfolio */
     .project { overflow:hidden; position:relative; }
-    .project img { width:100%; height:180px; object-fit:cover; transition: transform 0.4s ease; }
+    .project img { width:100%; height:180px; object-fit:cover; transition: transform 0.4s ease; border-radius:12px; }
     .project:hover img { transform: scale(1.08); }
-    .project-content { padding:20px; }
+    .project-content { padding:15px; }
     .project-content a { color: var(--accent); text-decoration:none; font-weight:bold; }
 
-    /* Contact Form */
-    .contact-form { max-width:500px; margin: auto; display:flex; flex-direction:column; gap:15px; }
-    .contact-form .form-group input,
-    .contact-form .form-group textarea {
-      width:100%; padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.2);
-      background:transparent; color: var(--text); font-size:15px; transition: all 0.3s ease; font-family: inherit;
+    .contact-form { max-width:500px; margin:auto; display:flex; flex-direction:column; gap:15px; }
+    .contact-form input, .contact-form textarea {
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);
+      background:transparent; color: var(--text); font-size:15px; font-family:inherit;
     }
     body.light .contact-form input, body.light .contact-form textarea { border:1px solid #cbd5e1; }
     .contact-form input:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 8px var(--accent); }
 
-    /* Toast */
     .toast {
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-20px);
-  background: var(--accent);
-  color: #020617;
-  padding: 14px 24px;
-  border-radius: 14px;
-  font-weight: 600;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  z-index: 9999;
-}
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: var(--accent);
+      color: #020617;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight:600;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      opacity:0;
+      pointer-events:none;
+      transition: all 0.4s ease;
+      z-index:9999;
+    }
+    .toast.show { opacity:1; transform: translateX(-50%) translateY(0); }
 
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-    /* Scroll reveal */
     .reveal { opacity:0; transform:translateY(40px); transition: all 0.8s ease; }
     .reveal.active { opacity:1; transform:translateY(0); }
 
-    /* WhatsApp button */
     .whatsapp-btn { position:fixed; bottom:25px; right:25px; width:60px; height:60px; background:#25D366; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; text-decoration:none; box-shadow:0 15px 30px rgba(0,0,0,0.4); z-index:999; transition: transform 0.3s ease; }
     .whatsapp-btn:hover { transform: scale(1.1); }
 
+    footer { text-align:center; padding:20px; font-size:14px; color:var(--text); background:var(--nav); }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <h2>WebStudio</h2>
+    <a href="#"><img src="https://i.ibb.co/JwdzmdzB/file-00000000b40c724699b7799ce5a84f9b.png" alt="WebStudio logo"></a>
     <div>
       <a href="#storitve">Storitve</a>
       <a href="#zakaj">Zakaj jaz</a>
@@ -159,7 +144,7 @@
   <div class="hero reveal">
     <div>
       <h1>Izdelava sodobnih spletnih strani</h1>
-      <p>Pomagam malim podjetjem, da izstopajo na spletu s hitrimi, modernimi in odzivnimi spletnimi stranmi.</p>
+      <p>Pomagam malim podjetjem izstopati na spletu s hitrimi, modernimi in odzivnimi spletnimi stranmi.</p>
       <a href="#kontakt" class="btn">Zahtevaj ponudbo</a>
     </div>
   </div>
@@ -168,18 +153,9 @@
   <section id="storitve" class="reveal">
     <h2>Moje storitve</h2>
     <div class="services">
-      <div class="card">
-        <h3>Izdelava spletnih strani</h3>
-        <p>Sodobne in prilagojene spletne strani za vse naprave.</p>
-      </div>
-      <div class="card">
-        <h3>Pristajalne strani</h3>
-        <p>Enostavne strani za promocijo izdelkov ali storitev.</p>
-      </div>
-      <div class="card">
-        <h3>Vzdrževanje</h3>
-        <p>Posodobitve in tehnična podpora.</p>
-      </div>
+      <div class="card"><h3>Izdelava spletnih strani</h3><p>Sodobne in prilagojene spletne strani za vse naprave.</p></div>
+      <div class="card"><h3>Pristajalne strani</h3><p>Enostavne strani za promocijo izdelkov ali storitev.</p></div>
+      <div class="card"><h3>Vzdrževanje</h3><p>Posodobitve in tehnična podpora.</p></div>
     </div>
   </section>
 
@@ -187,22 +163,13 @@
   <section id="zakaj" class="reveal">
     <h2>Zakaj izbrati mene?</h2>
     <div class="services">
-      <div class="card">
-        <h3>Hitra izdelava</h3>
-        <p>Kratki dobavni roki.</p>
-      </div>
-      <div class="card">
-        <h3>Sodoben dizajn</h3>
-        <p>Čist in profesionalen videz.</p>
-      </div>
-      <div class="card">
-        <h3>Dostopne cene</h3>
-        <p>Idealno za mala podjetja.</p>
-      </div>
+      <div class="card"><h3>Hitra izdelava</h3><p>Kratki dobavni roki.</p></div>
+      <div class="card"><h3>Sodoben dizajn</h3><p>Čist in profesionalen videz.</p></div>
+      <div class="card"><h3>Dostopne cene</h3><p>Idealno za mala podjetja.</p></div>
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- CENE -->
   <section id="cene" class="reveal">
     <h2>Cene in paketi</h2>
     <div class="pricing">
@@ -218,7 +185,6 @@
         </ul>
         <a href="#kontakt" class="btn">Izberi paket</a>
       </div>
-
       <div class="price-card popular">
         <div class="badge">Najbolj priljubljen</div>
         <h3>Standard paket</h3>
@@ -233,7 +199,6 @@
         </ul>
         <a href="#kontakt" class="btn">Izberi paket</a>
       </div>
-
       <div class="price-card">
         <h3>Premium paket</h3>
         <p>Za resne projekte</p>
@@ -254,128 +219,33 @@
   <section id="portfolio" class="reveal">
     <h2>Portfolio</h2>
     <div class="portfolio">
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200" alt="Projekt 1">
-        <div class="project-content">
-          <h3>Poslovna spletna stran</h3>
-          <p>Preprosta predstavitvena stran za manjše podjetje.</p>
-          <a href="#">Ogled projekta</a>
-        </div>
-      </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200" alt="Projekt 2">
-        <div class="project-content">
-          <h3>Landing page</h3>
-          <p>Stran za promocijo storitev.</p>
-          <a href="#">Ogled projekta</a>
-        </div>
-      </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200" alt="Projekt 3">
-        <div class="project-content">
-          <h3>Osebna spletna stran</h3>
-          <p>Minimalističen dizajn.</p>
-          <a href="#">Ogled projekta</a>
-        </div>
-      </div>
+      <div class="project"><img src="https://via.placeholder.com/400x200" alt="Projekt 1"><div class="project-content"><h3>Poslovna spletna stran</h3><p>Preprosta predstavitvena stran za manjše podjetje.</p><a href="#">Ogled projekta</a></div></div>
+      <div class="project"><img src="https://via.placeholder.com/400x200" alt="Projekt 2"><div class="project-content"><h3>Landing page</h3><p>Stran za promocijo storitev.</p><a href="#">Ogled projekta</a></div></div>
+      <div class="project"><img src="https://via.placeholder.com/400x200" alt="Projekt 3"><div class="project-content"><h3>Osebna spletna stran</h3><p>Minimalističen dizajn.</p><a href="#">Ogled projekta</a></div></div>
     </div>
   </section>
 
   <!-- KONTAKT -->
-<section id="kontakt">
-  <h2>Kontakt</h2>
-
-  <form id="contactForm" class="contact-form">
-    <input type="hidden" name="_captcha" value="false">
-
-      <!-- Auto-reply -->
-  <input type="hidden" name="_autorespond" value="Hvala, prejel smo vaše sporočilo. Odgovorili vam bomo čim prej.">
-    <div class="form-group">
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <form id="contactForm" class="contact-form">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_autorespond" value="Hvala, prejel smo vaše sporočilo. Odgovorili vam bomo čim prej.">
       <input type="text" name="name" placeholder="Ime in priimek" required>
-    </div>
-
-    <div class="form-group">
       <input type="email" name="email" placeholder="Email naslov" required>
-    </div>
-
-    <div class="form-group">
       <input type="text" name="company" placeholder="Podjetje (neobvezno)">
-    </div>
-
-    <div class="form-group">
       <textarea name="message" placeholder="Sporočilo" required></textarea>
-    </div>
-
-    <button type="submit" class="btn">Pošlji sporočilo</button>
-  </form>
-
-  <div class="toast" id="toast">
-    Sporočilo je bilo poslano ✅
-  </div>
-</section>
-
-<style>
-  .toast {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    background: #38bdf8;
-    color: #020617;
-    padding: 14px 24px;
-    border-radius: 14px;
-    font-weight: 600;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s ease;
-    z-index: 9999;
-  }
-
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-</style>
-
-<script>
-const form = document.getElementById("contactForm");
-const toast = document.getElementById("toast");
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault(); // spriječi reload stranice
-
-  const data = new FormData(form);
-
-  fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
-    method: "POST",
-    headers: {
-      "Accept": "application/json" // ovo je ključno za JSON
-    },
-    body: data
-  })
-  .then(res => res.ok ? res.json() : Promise.reject())
-  .then(() => {
-    form.reset(); // očisti formu
-    window.scrollTo({ top: 0, behavior: "smooth" }); // scroll na vrh
-    toast.classList.add("show"); // pokaži toast
-    setTimeout(() => toast.classList.remove("show"), 4000); // sakrij nakon 4s
-  })
-  .catch(() => {
-    alert("Prišlo je do napake. Poskusite znova.");
-  });
-});
-</script>
+      <button type="submit" class="btn">Pošlji sporočilo</button>
+    </form>
+    <div class="toast" id="toast">Sporočilo je bilo poslano ✅</div>
+  </section>
 
   <!-- FOOTER -->
-  <footer>
-    © 2026 WebStudio | Vse pravice pridržane
-  </footer>
+  <footer>© 2026 WebStudio | Vse pravice pridržane</footer>
 
   <!-- WHATSAPP -->
   <a href="https://wa.me/38669761596" class="whatsapp-btn" target="_blank">💬</a>
 
-  <!-- JS -->
   <script>
     // Dark/Light mode
     const body = document.body;
@@ -401,11 +271,22 @@ form.addEventListener("submit", function(e) {
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
 
-
+    // Contact form
+    const form = document.getElementById("contactForm");
+    const toast = document.getElementById("toast");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch("https://formsubmit.co/ajax/harunhasanovic33@gmail.com", {
+        method:"POST",
+        headers:{"Accept":"application/json"},
+        body:data
+      })
+      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(()=>{form.reset(); window.scrollTo({top:0,behavior:"smooth"}); toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"),4000);})
+      .catch(()=>alert("Prišlo je do napake. Poskusite znova."));
+    });
   </script>
 
-
-  
-  
 </body>
 </html>
