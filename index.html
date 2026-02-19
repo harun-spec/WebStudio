@@ -100,7 +100,19 @@
     .project-content a { color: var(--accent); text-decoration:none; font-weight:bold; }
 
     .contact-form { max-width:500px; margin:auto; display:flex; flex-direction:column; gap:15px; }
-    .contact-form input, .contact-form textarea {
+   .contact-form input,
+   .contact-form textarea,
+   .contact-form select {
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:transparent;
+  color: var(--text);
+  font-size:15px;
+  font-family:inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
       width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);
       background:transparent; color: var(--text); font-size:15px; font-family:inherit;
     }
@@ -262,6 +274,29 @@
       <input type="text" name="name" placeholder="Ime in priimek" required>
       <input type="email" name="email" placeholder="Email naslov" required>
       <input type="text" name="company" placeholder="Podjetje (neobvezno)">
+      <select name="package" required>
+  <option value="">Kateri paket vas zanima?</option>
+  <option value="Osnovni">Osnovni</option>
+  <option value="Standard">Standard</option>
+  <option value="Premium">Premium</option>
+  <option value="Ne vem">Ne vem</option>
+</select>
+
+<select name="project_type" required>
+  <option value="">Tip projekta</option>
+  <option value="Nova stran">Nova stran</option>
+  <option value="Prenova">Prenova</option>
+  <option value="Landing page">Landing page</option>
+  <option value="Drugo">Drugo</option>
+</select>
+
+<select name="budget" required>
+  <option value="">Okvirni proračun</option>
+  <option value="<100€">< 100€</option>
+  <option value="100-200€">100–200€</option>
+  <option value="200€+">200€+</option>
+  <option value="Nimam ideje">Nimam ideje</option>
+</select>
       <textarea name="message" placeholder="Sporočilo" required></textarea>
       <button type="submit" class="btn">Pošlji sporočilo</button>
     </form>
